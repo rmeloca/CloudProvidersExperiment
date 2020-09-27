@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$(whoami)" != 'root' ]; then
+    echo "You have no permission to run $0 as non-root user."
+    exit 1;
+fi
+
+######################## C ##############################
+apt-get install build-essential checkinstall -y
+
+######################## python ##############################
+apt-get install python-pip -y
+#libcloud
+pip install apache-libcloud
+#aws
+pip install boto3
+#azure
+pip install azure
+
+######################## java ##############################
+add-apt-repository ppa:webupd8team/java -y
+apt-get update
+apt-get install oracle-java8-installer -y
+apt-get install maven -y
+
+######################## unzip ##############################
+apt-get install unzip -y
